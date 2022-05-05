@@ -3,9 +3,13 @@ const express = require('express')
 const Router = express.Router()
 
 
-Router.route('/api/v1/users').get().post().patch().delete()
-
-
+Router
+    .route('/signin')
+    .get()
+    .patch()
+Router
+    .route('/signup')
+    
 
 
 module.exports = Router
