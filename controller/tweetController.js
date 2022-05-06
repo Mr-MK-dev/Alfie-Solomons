@@ -6,14 +6,15 @@ exports.getTweets = async (req, res) => {
         reqQuery = { ...req.query }
         const data = Tweets.find(reqQuery)
 
-        // let newObj = new APIfeatures(data, reqQuery)
-        // newObj.sortFun()
+        let ele = new APIfeatures(data, reqQuery)
+        ele.sortFun().filterFun()
         console.log(reqQuery)
-        let   tweets = await data
+
+        let tweets = await data
         res.status(201).json(
             {
                 status: 'success',
-                tweetsNo:tweets.length,
+                tweetsNo: tweets.length,
                 data: {
                     tweets
                 }
@@ -22,7 +23,7 @@ exports.getTweets = async (req, res) => {
     } catch (error) {
         res.status(401).json({
             status: 'fail',
-            massage: error
+            massage: {error:error}
         })
     }
 }
@@ -70,7 +71,7 @@ exports.postTweet = async (req, res) => {
 
 exports.patchTweet = async (req, res) => {
     try {
-        tweets = await Tweets.findOneAndUpdate(req.params.id,req.body)
+        tweets = await Tweets.findOneAndUpdate(req.params.id, req.body)
         res.status(201).json(
             {
                 status: 'success',
@@ -97,7 +98,7 @@ exports.deleteTweet = async (req, res) => {
             {
                 status: 'success',
                 data: 'Delete done'
-                }
+            }
         )
     }
     catch (error) {

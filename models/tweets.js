@@ -4,7 +4,8 @@ const tweetSchema = new mongoose.Schema(
   {
     ratingsQuantity: {
       type: Number,
-      default: 0
+      default: 0,
+      required:[true,'Miss ratingsQuantity']
     },
 
     description: {
@@ -21,7 +22,15 @@ const tweetSchema = new mongoose.Schema(
       default: Date.now(),
       select: false
     }
+  },{
+    toJSON:{virtuals: true},
+    toObject:{virtuals: true}
   }
+)
+
+tweetSchema.virtual('halfRate').get(function (){
+  return this.ratingsQuantity  / 2 ;
+}
 )
 
 const Tweets = mongoose.model('Tweets', tweetSchema)
