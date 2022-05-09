@@ -1,35 +1,40 @@
 const mongoose = require("mongoose");
+const user = require('./user')
+
+
+
 
 const tweetSchema = new mongoose.Schema(
   {
-    ratingsQuantity: {
-      type: Number,
-      default: 0,
-      required:[true,'Miss ratingsQuantity']
-    },
-
-    description: {
-      type: String,
+    title:{
+      type:String,
       trim: true
     },
-    imageCover: {
+    contact: {
       type: String,
-      required: [true, 'A tour must have a cover image']
+      trim: true
     },
     images: [String],
     createdAt: {
       type: Date,
       default: Date.now(),
       select: false
-    }
-  },{
-    toJSON:{virtuals: true},
-    toObject:{virtuals: true}
-  }
+    },
+    tweetAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    UserId:{
+       type: mongoose.Schema.ObjectId,
+      ref: 'user' }
+  }, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+}
 )
 
-tweetSchema.virtual('halfRate').get(function (){
-  return this.ratingsQuantity  / 2 ;
+tweetSchema.virtual('halfRate').get(function () {
+  return this.ratingsQuantity / 2;
 }
 )
 
