@@ -6,8 +6,8 @@ const user = require('./user')
 
 const tweetSchema = new mongoose.Schema(
   {
-    title:{
-      type:String,
+    title: {
+      type: String,
       trim: true
     },
     contact: {
@@ -17,16 +17,17 @@ const tweetSchema = new mongoose.Schema(
     images: [String],
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: new Date(),
       select: false
     },
     tweetAt: {
       type: Date,
-      default: Date.now(),
+      default: new Date(),
     },
-    UserId:{
-       type: mongoose.Schema.ObjectId,
-      ref: 'user' }
+    UserId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'user'
+    }
   }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

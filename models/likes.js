@@ -5,18 +5,18 @@ const user = require('./user.js')
 
 
 const likeSchema = new mongoose.Schema(
-{
-usertId:{
-type : mongoose.Schema.ObjectId,
-ref:'user'
-},
-tweetId :{
-    type: mongoose.Schema.ObjectId,
-    ref:'tweet'
-}
-}
+    {
+        usertId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'user'
+        },
+        tweetId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'tweet'
+        }
+    }
 )
 
 
-const Likes = mongoose.model('Likes',likeSchema)
+const Likes = mongoose.model('Likes', likeSchema)
 module.exports = Likes

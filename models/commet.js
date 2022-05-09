@@ -6,19 +6,21 @@ const user = require('./user.js')
 const commentSchema = new mongoose.Schema(
     {
         usertId: {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose.SchemaTypes.ObjectId,
             ref: 'user'
         },
         tweetId: {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose.SchemaTypes.ObjectId,
             ref: 'tweet'
         },
         comment: {
             type: String,
             trim: true,
         },
-        postAt : {type: Date,
-        default:Date.now()}
+        postAt: {
+            type: Date,
+            default: new Date()
+        }
     }
 )
 

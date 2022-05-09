@@ -10,7 +10,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Enter your Eamil'],
             unique: [true, 'This email used before'],
-            lowercase: true
+            lowercase: true,
+            validate:(value)=>{
+                return validate.isEmail(value)
+            }
         },
         photo: String,
         password: {
@@ -24,12 +27,22 @@ const userSchema = new mongoose.Schema(
             default: 'user'
 
         },
-        username: {type: String,
-        unique:[true,'This username used before'] }
-        ,gender:{type:Boolean,
-            enum:['Male','Female','Animel']}
+        username: {
+            type: String,
+            unique: [true, 'This username used before']
+        }
+        , gender: {
+            type: Boolean,
+            enum: ['Male', 'Female', 'Animel']
+        }
     },
 )
 
+userSchema.methods.sayhi = function () {
+
+}
+
 const Users = mongoose.model('Users', userSchema)
+
+
 module.exports = Users
