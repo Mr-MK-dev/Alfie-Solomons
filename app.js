@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.use('/api/v1/tweets',tweetRoute)
-app.use('/api/v1/users',usersRoute)
+app.use('/api/v1/tweets', tweetRoute)
+app.use('/api/v1/users', usersRoute)
 
 
 module.exports = app

@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
-
-
+const validator = require('validator')
 const userSchema = new mongoose.Schema(
     {
-        fname: {
-            String
-        }, lname: { String },
+        name: {
+            type: String,
+            required: [true, 'Enter your name ,PAL🙌;']
+        }
+        , 
         email: {
             type: String,
             required: [true, 'Enter your Eamil'],
             unique: [true, 'This email used before'],
             lowercase: true,
-            validate:(value)=>{
-                return validate.isEmail(value)
-            }
+            validate:[validator.isEmail,'Enter a valid email']
         },
         photo: String,
         password: {
@@ -21,19 +20,9 @@ const userSchema = new mongoose.Schema(
             required: [true, ' provide a password'],
             minlength: 8
         },
-        role: {
-            type: String,
-            enum: ['user', 'guide', 'lead-guide', 'admin'],
-            default: 'user'
-
-        },
-        username: {
-            type: String,
-            unique: [true, 'This username used before']
-        }
-        , gender: {
-            type: Boolean,
-            enum: ['Male', 'Female', 'Animel']
+        passwordConfirm:{
+            type : String,
+            required:[true,'Please confirm your ']
         }
     },
 )
