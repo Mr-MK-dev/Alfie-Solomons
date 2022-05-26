@@ -2,64 +2,119 @@
 	"info": {
 		"_postman_id": "10c22160-c072-4ec0-b4a5-8c79123457da",
 		"name": "mk007",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19040062"
 	},
 	"item": [
 		{
-			"name": "Tweets",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "127.0.0.1:3030/api/v1/tweets",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3030",
-					"path": [
-						"api",
-						"v1",
-						"tweets"
-					]
+			"name": "SignUp",
+			"item": [
+				{
+					"name": "new User --create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"mk\",\r\n    \"email\":\"roaa@gmail.com\",\r\n    \"password\":\"1234mkmk\",\r\n    \"passwordConfirm\":\"1234mkmk\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3030/api/v1/users/signup",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "QueryTweets",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "127.0.0.1:3030/api/v1/tweets?sort=ratingsQuantity&fields=ratingsQuantity,images",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3030",
-					"path": [
-						"api",
-						"v1",
-						"tweets"
-					],
-					"query": [
-						{
-							"key": "sort",
-							"value": "ratingsQuantity"
-						},
-						{
-							"key": "fields",
-							"value": "ratingsQuantity,images"
+			"name": "Tweets",
+			"item": [
+				{
+					"name": "QueryTweets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3030/api/v1/tweets?sort=ratingsQuantity",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"v1",
+								"tweets"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "ratingsQuantity"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "ratingsQuantity,images,description",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Tweets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3030/api/v1/tweets",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"v1",
+								"tweets"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

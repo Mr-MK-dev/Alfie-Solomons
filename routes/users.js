@@ -1,15 +1,11 @@
-
 const express = require('express')
+const authController = require('./../controller/authController')
 const Router = express.Router()
 
+Router.post('/signup',authController.createUser)
 
-Router
-    .route('/signin')
-    .get()
-    .patch()
-Router
-    .route('/signup')
-    
+
+
 
 
 module.exports = Router
